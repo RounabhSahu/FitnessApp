@@ -45,11 +45,17 @@ const Form = () => {
         navigate('/Members')
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>
+        <div className="p-0 m-0 w-full h-screen bg-center bg-fixed bg-no-repeat bg-cover bg-gradient-to-r from-indigo-600 to-purple-700">
+            <h1 className="text-6xl font-bold text-white mx-auto text-center mb-4">
+                <span className="text-gradient-primary">Fitness App</span>
+            </h1>
+            <form
+                className="mx-auto bg-white p-8 rounded-lg shadow-xl w-1/2 min-w-fit"
+                onSubmit={handleSubmit}>
+                <label class="block text-gray-700 font-bold mb-2">
                     Name:
                     <input
+                        className="w-full border border-gray-400 p-2 rounded-lg"
                         type="text"
                         name="name"
                         value={formData.name}
@@ -57,9 +63,10 @@ const Form = () => {
                     />
                 </label>
                 <br />
-                <label>
+                <label class="block text-gray-700 font-bold mb-2">
                     Email:
                     <input
+                        className="w-full border border-gray-400 p-2 rounded-lg"
                         type="email"
                         name="email"
                         value={formData.email}
@@ -67,9 +74,10 @@ const Form = () => {
                     />
                 </label>
                 <br />
-                <label>
+                <label className="block text-gray-700 font-bold mb-2">
                     Phone Number:
                     <input
+                        className="w-full border border-gray-400 p-2 rounded-lg"
                         type='number'
                         name="number"
                         value={formData.number}
@@ -77,9 +85,10 @@ const Form = () => {
                     />
                 </label>
                 <br />
-                <label>
+                <label className="block text-gray-700 font-bold mb-2">
                     Address:
                     <input
+                        className="w-full border border-gray-400 p-2 rounded-lg"
                         type="text"
                         name="address"
                         value={formData.address}
@@ -87,11 +96,16 @@ const Form = () => {
                     />
                 </label>
                 <br/>
-                <button type="submit">Submit</button>
+                <button
+                    className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300 ease-in-out hover:shadow-md focus:outline-none focus:shadow-outline"
+                    type="submit">Submit</button>
                 <span>{warning}</span>
             </form>
+            <div className="flex items-center justify-center">
             <button
+                className="mx-auto mt-4 bg-gray-800 hover:bg-gray-700 text-white text-3xl font-bold py-4 px-8 rounded-md transition-colors duration-300 ease-in-out hover:shadow-md focus:outline-none focus:shadow-outline"
                 onClick={()=>forwardMembers()}>Member list</button>
+            </div>
         </div>
     );
 };
