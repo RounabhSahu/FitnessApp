@@ -28,15 +28,15 @@ const Form = () => {
         }else if (formData.email === '') {
             setWarning("Email is Empty");
         }
-        else if (formData.number.length ===10) {
-            setWarning("Phone number should be 10 digits long");
-        }
         else if (formData.address === '') {
             setWarning("Address is Empty");
         }
         else{
-            await setDoc(doc(db,'members',formData.email),formData);
             setWarning("Submitted Successfully");
+            await setDoc(doc(db,'members',formData.email),formData).then(()=>{
+                console.log("Document successfully written!");
+            });
+
 
         }
 
@@ -46,7 +46,7 @@ const Form = () => {
         navigate('/Members')
     }
     return (
-        <div className="p-0 m-0 w-full h-screen bg-center bg-fixed bg-no-repeat bg-cover bg-gradient-to-r from-indigo-600 to-purple-700 flex flex-col items-center justify-center">
+        <div className="p-0 m-0 w-full h-screen bg-center bg-fixed bg-no-repeat bg-cover bg-gradient-to-b from-orange-600/80 to-purple-700 flex flex-col items-center justify-center">
             <h1 className="text-3xl text-center mb-4">
                 <span className="text-white">Fitness Club Registration</span>
             </h1>
@@ -106,7 +106,7 @@ const Form = () => {
             </form>
             <div className="flex items-center justify-center">
             <button
-                className="mx-auto mt-4 bg-gray-800 hover:bg-gray-700 text-white text-3xl font-bold py-4 px-8 rounded-md transition-colors duration-300 ease-in-out hover:shadow-md focus:outline-none focus:shadow-outline"
+                className="mx-auto mt-4 bg-blue-800 hover:bg-gray-700 text-white text-3xl font-bold py-4 px-8 rounded-md transition-colors duration-300 ease-in-out hover:shadow-md focus:outline-none focus:shadow-outline"
                 onClick={()=>forwardMembers()}>Member list</button>
             </div>
         </div>
