@@ -19,7 +19,6 @@ const Members = () => {
 
     return (
         <div className="p-0 m-0 w-full h-screenbg-cover bg-center bg-fixed bg-no-repeat bg-indigo-600">
-            These are members
             <br/>
             <button
                 className="mx-auto mt-4 bg-gray-800 hover:bg-gray-700 text-white text-3xl font-bold py-4 px-8 rounded-md transition-colors duration-300 ease-in-out hover:shadow-md focus:outline-none focus:shadow-outline"

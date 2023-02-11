@@ -9,7 +9,7 @@ const Form = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        number: 0,
+        number: null,
         address:''
     });
 
@@ -28,8 +28,8 @@ const Form = () => {
         }else if (formData.email === '') {
             setWarning("Email is Empty");
         }
-        else if (formData.number.length < 10 || formData.number.length > 10) {
-            setWarning("Phone number should be least 10 digits long");
+        else if (formData.number.length ===10) {
+            setWarning("Phone number should be 10 digits long");
         }
         else if (formData.address === '') {
             setWarning("Address is Empty");
@@ -37,6 +37,7 @@ const Form = () => {
         else{
             await setDoc(doc(db,'members',formData.email),formData);
             setWarning("Submitted Successfully");
+
         }
 
     };
@@ -45,14 +46,14 @@ const Form = () => {
         navigate('/Members')
     }
     return (
-        <div className="p-0 m-0 w-full h-screen bg-center bg-fixed bg-no-repeat bg-cover bg-gradient-to-r from-indigo-600 to-purple-700">
-            <h1 className="text-6xl font-bold text-white mx-auto text-center mb-4">
-                <span className="text-gradient-primary">Fitness App</span>
+        <div className="p-0 m-0 w-full h-screen bg-center bg-fixed bg-no-repeat bg-cover bg-gradient-to-r from-indigo-600 to-purple-700 flex flex-col items-center justify-center">
+            <h1 className="text-3xl text-center mb-4">
+                <span className="text-white">Fitness Club Registration</span>
             </h1>
             <form
-                className="mx-auto bg-white p-8 rounded-lg shadow-xl w-1/2 min-w-fit"
+                className="mx-auto bg-white p-8 rounded-lg shadow-xl w-1/3 h-[600px] min-w-fit pt-24"
                 onSubmit={handleSubmit}>
-                <label class="block text-gray-700 font-bold mb-2">
+                <label className="block text-gray-700 font-bold mb-2">
                     Name:
                     <input
                         className="w-full border border-gray-400 p-2 rounded-lg"
@@ -63,7 +64,7 @@ const Form = () => {
                     />
                 </label>
                 <br />
-                <label class="block text-gray-700 font-bold mb-2">
+                <label className="block text-gray-700 font-bold mb-2">
                     Email:
                     <input
                         className="w-full border border-gray-400 p-2 rounded-lg"
@@ -96,9 +97,11 @@ const Form = () => {
                     />
                 </label>
                 <br/>
+                <div className="flex items-center justify-center mt-8">
                 <button
-                    className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300 ease-in-out hover:shadow-md focus:outline-none focus:shadow-outline"
+                    className="mx-auto bg-blue-800 rounded-md hover:bg-gray-700 text-white font-bold py-2 px-4 transition-colors duration-300 ease-in-out hover:shadow-md focus:outline-none focus:shadow-outline"
                     type="submit">Submit</button>
+                </div>
                 <span>{warning}</span>
             </form>
             <div className="flex items-center justify-center">
