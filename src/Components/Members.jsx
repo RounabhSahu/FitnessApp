@@ -36,10 +36,10 @@ const Members = () => {
                 {show && members.map((m,index)=>{
                     return(
                         <tr key={index}>
-                            <td key={index.toString()+'name'}>{m.name}</td>
-                            <td key={index.toString()+'add'}>{m.address}</td>
-                            <td key={index.toString()+'email'}>{m.email}</td>
-                            <td key={index.toString()+'num'}>{m.number}</td>
+                            <td key={index.toString()+'name'}>{m[1].name}</td>
+                            <td key={index.toString()+'add'}>{m[1].address}</td>
+                            <td key={index.toString()+'email'}>{m[1].email}</td>
+                            <td key={index.toString()+'num'}>{m[1].number}</td>
                         </tr>
                     )
                 })}

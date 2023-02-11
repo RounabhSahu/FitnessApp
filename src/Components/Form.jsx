@@ -5,7 +5,7 @@ import {db} from "../Firebase";
 
 const Form = () => {
     const navigate=useNavigate();
-    const ref=collection(db, 'members');
+    const [warning, setWarning] = useState('');
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -23,7 +23,22 @@ const Form = () => {
     const handleSubmit = async(event) => {
         event.preventDefault();
         console.log(formData);
-        await setDoc(doc(db,'members',formData.email),formData);
+        if (formData.name === '') {
+            setWarning("Name is Empty");
+        }else if (formData.email === '') {
+            setWarning("Email is Empty");
+        }
+        else if (formData.number.length < 10 || formData.number.length > 10) {
+            setWarning("Phone number should be least 10 digits long");
+        }
+        else if (formData.address === '') {
+            setWarning("Address is Empty");
+        }
+        else{
+            await setDoc(doc(db,'members',formData.email),formData);
+            setWarning("Submitted Successfully");
+        }
+
     };
 
     const forwardMembers= () => {
@@ -73,6 +88,7 @@ const Form = () => {
                 </label>
                 <br/>
                 <button type="submit">Submit</button>
+                <span>{warning}</span>
             </form>
             <button
                 onClick={()=>forwardMembers()}>Member list</button>
